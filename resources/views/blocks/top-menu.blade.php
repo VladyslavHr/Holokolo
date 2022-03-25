@@ -1,3 +1,5 @@
+{{-- top menu  with search includes in all pages, with ajax search --}}
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark top-menu">
     <div class="container d-flex">
@@ -5,9 +7,6 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Main page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('names*') ? 'active' : '' }}" href="{{ route('names.index') }}">Name days</a>
             </li>
             </ul>
             <form class="d-flex  navbar-search-form" id="main_search_form" action="{{ route('names.result') }}">

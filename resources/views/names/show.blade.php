@@ -1,6 +1,6 @@
-@extends('layouts.main')
+{{-- page of current name --}}
 
-{{-- @section('title', 'name days') --}}
+@extends('layouts.main')
 
 @section('content')
 
@@ -14,11 +14,6 @@
             </div>
         </div>
     </div>
-    {{-- <ul class="list-group">
-        @foreach ($names as $name)
-            <li class="list-group-item">{{ $name->name }}</li>
-        @endforeach
-    </ul> --}}
 </div>
 
 

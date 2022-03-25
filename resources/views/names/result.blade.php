@@ -1,24 +1,18 @@
-@extends('layouts.main')
+{{-- list of search results --}}
 
-{{-- @section('title', 'name days') --}}
+@extends('layouts.main')
 
 @section('content')
 
 <div class="container ">
-    {{-- <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card-main bg-dark">
-                <div class="card-date">Today is  </div>
-                <div class="card-question">Who have name day today?</div>
-                <div class="card-name">Name </div>
-            </div>
-        </div>
-    </div> --}}
-    <ul class="list-group">
-        @foreach ($names as $name)
-            <a href="{{ route('names.show', $name) }}" class="list-group-item">{{ $name->name }}</a>
-        @endforeach
-    </ul>
+    <div class="resul-list-wrapp">
+        <ul class="list-group list-result">
+            @foreach ($names as $name)
+                <a href="{{ route('names.show', $name) }}" class="list-group-item list-result-link">{{ $name->name }}</a>
+            @endforeach
+        </ul>
+    </div>
+
 </div>
 
 

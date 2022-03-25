@@ -18,28 +18,8 @@ class NameController extends Controller
             ];
         }
 
-        // Вернуть запрос
-        // DB::enableQueryLog();
-        // $search_list_html = '';
-
-
         $names = Name::where('name', 'like', '%'.$query.'%')->limit(5)->get();
 
-
-        // $users = User::where('role', '=', 'user')
-        //     ->where(function($db) use ($query)
-        //     {
-        //         $db->where('name', 'like', '%'.$query.'%');
-        //         $db->orwhere('name', 'like', '%'.$query.'%');
-        //     })->limit(5)->get();
-
-        //     if(count($users)){
-        //         $search_list_html .= '<li class="search-autocomplete-title"><small>users</small></li>';
-        //     }
-            // foreach ($names as $name) {
-                // $name = $user->name.' '.$user->last_name;
-            //     $search_list_html .= '<li class="result-item"><a href="/profile/'.$name->id.'">'.$name.'</a></li>';
-            // }
 
         return  [
             'status' => 'ok',
@@ -57,21 +37,6 @@ class NameController extends Controller
      */
     public function index()
     {
-        // $month_eng = [
-        //     'January',
-        //     'February ',
-        //     'March ',
-        //     'April',
-        //     'May',
-        //     'June ',
-        //     'July ',
-        //     'August',
-        //     'September',
-        //     'October',
-        //     'November',
-        //     'December',
-        // ];
-
 
         // $names = Name::all();
 
@@ -81,6 +46,14 @@ class NameController extends Controller
         //     }
 
         $results = Name::all();
+
+        foreach ($results as $res){
+            $monthNum  = date('F', mktime(0, 0, 0, $res->month, 10));;
+
+        }
+        // $res_names = implode(', ', $results);
+        dd($monthNum);
+
 
         // $arr1 = [];
         // foreach ($results as $name => $result){
@@ -96,6 +69,7 @@ class NameController extends Controller
         return view('names.index', [
             // 'today_names' => $today_names,
             // 'array' => $array,
+            'monthNum' => $monthNum,
             'results' => $results,
             // 'month_eng' => $month_eng,
         ]);
@@ -148,9 +122,7 @@ class NameController extends Controller
     public function show(Name $name)
     {
 
-        // dd($name);
 
-        // $monthNum  = $name->month;
         $monthName = date('F', mktime(0, 0, 0, $name->month, 10)); // March
 
         return view('names.show', [
@@ -158,6 +130,7 @@ class NameController extends Controller
             'monthName' => $monthName,
         ]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
